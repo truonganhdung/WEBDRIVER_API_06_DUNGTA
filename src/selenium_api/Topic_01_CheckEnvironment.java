@@ -12,7 +12,7 @@ import org.testng.annotations.AfterClass;
 
 public class Topic_01_CheckEnvironment {
 	WebDriver driver;
-	
+
   @BeforeClass
   public void beforeClass() {
 	  driver = new FirefoxDriver();
@@ -22,8 +22,8 @@ public class Topic_01_CheckEnvironment {
   @Test
   public void TC_01_CheckBrower() {
 	  driver.get("https://live.guru99.com");
-	  String homePageTitle = driver.getTitle();
-	  Assert.assertEquals(homePageTitle, "Home page"); 
+  String homePageTitle = driver.getTitle();
+  Assert.assertEquals(homePageTitle, "Home page"); 
   }
 
 
@@ -33,3 +33,5 @@ public class Topic_01_CheckEnvironment {
   }
 
 }
+
+//check integrate w' Slack'
