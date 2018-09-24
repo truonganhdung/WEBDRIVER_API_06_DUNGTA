@@ -131,6 +131,7 @@ public class Topic_03_Browser_WebElementCommands {
 		
 		driver.findElement(By.xpath("//a[@class='skip-link skip-account']//span[text()='Account']")).click();
 		driver.findElement(By.xpath("//a[@title='Log Out']")).click();
+				
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
 		String checkLogout = driver.getTitle();
@@ -138,8 +139,9 @@ public class Topic_03_Browser_WebElementCommands {
 		
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
-		/*String checkNavigateToHomePage = driver.getTitle();
-		Assert.assertEquals(checkNavigateToHomePage, "Home page");*/
+		String checkNavigateToHomePage = driver.getTitle();
+		Assert.assertEquals(checkNavigateToHomePage, "Home page");
+		
 		//Don't match expected [Home page], always fail because of founding [Magento Commerce] although has been wait as above
 		
 		driver.close();
@@ -171,7 +173,7 @@ public class Topic_03_Browser_WebElementCommands {
 		}
 	}
 
-	@Test(enabled=true)
+	@Test(enabled=false)
 	public void TC_03_2_VerifyElementEnable() {
 		driver.get("http://daominhdam.890m.com/");
 		
@@ -179,7 +181,7 @@ public class Topic_03_Browser_WebElementCommands {
 		WebElement radAgeUnder18 = driver.findElement(By.id("under_18"));
 		WebElement txtEreaEdu = driver.findElement(By.id("edu"));
 		WebElement drpJob1 = driver.findElement(By.id("job1"));
-		WebElement chbDevelopment = driver.findElement(By.id("development"));
+		WebElement chbxDevelopment = driver.findElement(By.id("development"));
 		WebElement slider1 = driver.findElement(By.id("slider-1"));
 		WebElement btnEnabled = driver.findElement(By.id("button-enabled"));
 		
@@ -187,22 +189,40 @@ public class Topic_03_Browser_WebElementCommands {
 		elementEnable(radAgeUnder18);
 		elementEnable(txtEreaEdu);
 		elementEnable(drpJob1);
-		elementEnable(chbDevelopment);
+		elementEnable(chbxDevelopment);
 		elementEnable(slider1);
 		elementEnable(btnEnabled);
 		//--
 		
 		WebElement txtPass = driver.findElement(By.id("password"));
-		WebElement radDisable = driver.findElement(By.xpath("//label[text()='Radiobutton is disabled']/preceding-sibling::input[@id='radio-disabled']]"));
+		WebElement radDisable = driver.findElement(By.xpath("//label[@class='light']/preceding-sibling::input[@id='radio-disabled']"));
+		WebElement txtEreaBio = driver.findElement(By.xpath("//label[@for='bio']/following-sibling::textarea"));
+		WebElement drpJob2 = driver.findElement(By.xpath("//label[@for='job2']/following-sibling::select[@id='job2']"));
+		WebElement chbxDisabled = driver.findElement(By.xpath("//label[@class='light']/preceding-sibling::input[@id='check-disbaled']"));
+		WebElement slider2 = driver.findElement(By.xpath("//label[@for='slider-2']/following-sibling::input"));
+		WebElement btnDisabled = driver.findElement(By.xpath("//button[@id='button-enabled']/preceding-sibling::button"));
 		
-		////label[contain(text(),'Biography')]/following-sibling::textarea[@id='bio']
-		/*WebElement txtEreaEdu = driver.findElement(By.id("edu"));
-		WebElement drpJob1 = driver.findElement(By.id("job1"));
-		WebElement chbDevelopment = driver.findElement(By.id("development"));
-		WebElement slider1 = driver.findElement(By.id("slider-1"));
-		WebElement btnEnabled = driver.findElement(By.id("button-enabled"));*/
+		elementEnable(txtPass);
+		elementEnable(radDisable);
+		elementEnable(txtEreaBio);
+		elementEnable(drpJob2);
+		elementEnable(chbxDisabled);
+		elementEnable(slider2);
+		elementEnable(btnDisabled);
 	}
 	
+	@Test(enabled=false)
+	public void TC_03_3_VerifyElementIsSelected() {
+		driver.get("http://daominhdam.890m.com/");
+		
+		WebElement radAgeUnder18 = driver.findElement(By.xpath("//input[@id='under_18']"));
+		WebElement chbxDevelopment = driver.findElement(By.xpath("//input[@id='development']"));
+		
+		radAgeUnder18.click();
+		
+		elementIsSelected(radAgeUnder18);
+		elementIsSelected(chbxDevelopment);
+	}
 	//--
 		
 	public int randomInt() {
@@ -219,6 +239,13 @@ public class Topic_03_Browser_WebElementCommands {
 			System.out.println("Element is disable");
 	}
 	
+	public void elementIsSelected(WebElement element) {
+		if(element.isSelected()) {
+			System.out.println("Element is selected");
+		}
+		else
+			element.click();
+	}
 	
 	@AfterClass
 	public void afterClass() {
