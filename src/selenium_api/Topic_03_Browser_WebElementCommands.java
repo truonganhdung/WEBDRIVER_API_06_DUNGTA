@@ -1,3 +1,8 @@
+/* Author: truonganhdung
+ * Created Date: 09/23/2018
+ * Modified Date: 09/24/2018
+ * */
+
 package selenium_api;
 
 import java.util.Random;
@@ -16,45 +21,46 @@ public class Topic_03_Browser_WebElementCommands {
     WebDriver driver;
     int emailRandom;
 
+    //-_-Precondition_-_-_-_-_
 	@BeforeClass
 	public void beforeClass() {
 		driver = new FirefoxDriver();
-	}
-	
-	//--
-	
-	//Topic 02: https://www.evernote.com/shard/s415/sh/e045f885-d0a8-41f6-83c1-39637fba4ba3/bcc608fc47462827
-	@Test(enabled=false)
-	public void TC_02_1_VerifyURLandTitle() {
 		driver.get("http://live.guru99.com");
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		
+	}
+	
+	//-_-Testcase-_-_-_-_-_-_
+	
+	//Topic 02: https://www.evernote.com/shard/s415/sh/e045f885-d0a8-41f6-83c1-39637fba4ba3/bcc608fc47462827
+	@Test(enabled=true)
+	public void TC_02_1_VerifyURLandTitle() {
+		//driver.get("http://live.guru99.com");
 		String homePageTitle = driver.getTitle();
 		Assert.assertEquals(homePageTitle, "Home page");
 		
-		driver.findElement(By.xpath("//div[@class='footer']//a[@title='My Account']")).click();
-		
+		findElement("//div[@class='footer']//a[@title='My Account']");
+				
 		String loginPageUrl = driver.getCurrentUrl();
 
-		driver.findElement(By.xpath("//a[@class='button']")).click();
-		
+		findElement("//a[@class='button']");
+	
 		String createPageURL=  driver.getCurrentUrl();
 
 		driver.get(loginPageUrl);
 		
 		Assert.assertEquals(loginPageUrl, "http://live.guru99.com/index.php/customer/account/login/");
 		
-		driver.findElement(By.xpath("//a[@class='button']")).click();
+		findElement("//a[@class='button']");
 		Assert.assertEquals(createPageURL, "http://live.guru99.com/index.php/customer/account/create/");
 	}
 
-	@Test(enabled=false)
+	@Test(enabled=true)
 	public void TC_02_2_LoginEmpty() {
 		driver.get("http://live.guru99.com");
-		driver.findElement(By.xpath("//div[@class='footer']//a[@title='My Account']")).click();
-		
-		driver.findElement(By.xpath("//span[text()='Login']")).click();
+		findElement("//div[@class='footer']//a[@title='My Account']");
+			
+		findElement("//span[text()='Login']");
 		
 		String strEmailAddress = driver.findElement(By.id("advice-required-entry-email")).getText();
 		Assert.assertEquals(strEmailAddress, "This is a required field.");
@@ -63,15 +69,13 @@ public class Topic_03_Browser_WebElementCommands {
 		Assert.assertEquals(strPass, "This is a required field.");
 	}
 	
-	@Test(enabled=false)
+	@Test(enabled=true)
 	public void TC_02_3_LoginWithEmailInvalid() {
 		driver.get("http://live.guru99.com");
-		driver.findElement(By.xpath("//div[@class='footer']//a[@title='My Account']")).click();
+		findElement("//div[@class='footer']//a[@title='My Account']");
 		
-		WebElement eleEmail = driver.findElement(By.id("email"));
-		eleEmail.click();
-		eleEmail.clear();
-		eleEmail.sendKeys("123434234@12312.123123");
+		WebElement eltEmail = driver.findElement(By.id("email"));
+		inputData(eltEmail, "123434234@12312.123123");
 		
 		driver.findElement(By.id("send2")).click();
 		
@@ -79,19 +83,16 @@ public class Topic_03_Browser_WebElementCommands {
 		Assert.assertEquals(strEmailInvalid, "Please enter a valid email address. For example johndoe@domain.com.");
 	}
 	
-	@Test(enabled=false)
+	@Test(enabled=true)
 	public void TC_02_4_LoginWithPasswordInvalid() {
 		driver.get("http://live.guru99.com");
-		driver.findElement(By.xpath("//div[@class='footer']//a[@title='My Account']")).click();
+		findElement("//div[@class='footer']//a[@title='My Account']");
 		
-		WebElement eleEmail = driver.findElement(By.id("email"));
-		//eleEmail.click();
-		eleEmail.clear();
-		eleEmail.sendKeys("automation@gmail.com");
+		WebElement eltEmail = driver.findElement(By.id("email"));
+		inputData(eltEmail, "automation@gmail.com");
 		
-		WebElement elePass = driver.findElement(By.id("pass"));
-		elePass.clear();
-		elePass.sendKeys("123");
+		WebElement eltPass = driver.findElement(By.id("pass"));
+		inputData(eltPass, "123");
 		
 		driver.findElement(By.id("send2")).click();
 		
@@ -99,54 +100,42 @@ public class Topic_03_Browser_WebElementCommands {
 		Assert.assertEquals(strPassInvalid, "Please enter 6 or more characters without leading or trailing spaces.");
 	}
 	
-	@Test(enabled=false)
-	public void TC_02_5_CreateAnAccount() {
+	@Test(enabled=true)
+	public void TC_02_5_CreateAnAccount() throws InterruptedException {
 		emailRandom = randomInt();
-		
+
 		driver.get("http://live.guru99.com");
-		driver.findElement(By.xpath("//div[@class='footer']//a[@title='My Account']")).click();
+		findElement("//div[@class='footer']//a[@title='My Account']");
+		findElement("//span[text()='Create an Account']");
 		
-		driver.findElement(By.xpath("//span[text()='Create an Account']")).click();
+		WebElement eltFirstName = driver.findElement(By.xpath("//input[@id='firstname']"));
+		WebElement eltLastName = driver.findElement(By.xpath("//input[@id='lastname']"));
+		WebElement eltEmail = driver.findElement(By.xpath("//input[@id='email_address']"));
+		WebElement eltPass = driver.findElement(By.xpath("//input[@id='password']"));
+		WebElement eltConfirm = driver.findElement(By.xpath("//input[@id='confirmation']"));
 		
-		driver.findElement(By.xpath("//input[@id='firstname']")).clear();
-		driver.findElement(By.xpath("//input[@id='firstname']")).sendKeys("De");
+		inputData(eltFirstName, "De");
+		inputData(eltLastName, "Mo");
+		inputData(eltEmail, "automation" + emailRandom + "@gmail.com");
+		inputData(eltPass, "Demo@123");
+		inputData(eltConfirm, "Demo@123");
 		
-		driver.findElement(By.xpath("//input[@id='lastname']")).clear();
-		driver.findElement(By.xpath("//input[@id='lastname']")).sendKeys("Mo");
-		
-		driver.findElement(By.xpath("//input[@id='email_address']")).clear();
-		driver.findElement(By.xpath("//input[@id='email_address']")).sendKeys("automation" + emailRandom + "@gmail.com");
-		
-		driver.findElement(By.xpath("//input[@id='password']")).clear();
-		driver.findElement(By.xpath("//input[@id='password']")).sendKeys("Demo@123");
-		
-		driver.findElement(By.xpath("//input[@id='confirmation']")).clear();
-		driver.findElement(By.xpath("//input[@id='confirmation']")).sendKeys("Demo@123");
-		
-		driver.findElement(By.xpath("//span[text()='Register']")).click();
-		
-		WebElement eleRegistering = driver.findElement(By.xpath("//li[@class='success-msg']//span[text()='Thank you for registering with Main Website Store.']"));
-		String strRegistering = eleRegistering.getText();
+		findElement("//span[text()='Register']");
+			
+		WebElement eltRegistering = driver.findElement(By.xpath("//li[@class='success-msg']//span[text()='Thank you for registering with Main Website Store.']"));
+		String strRegistering = eltRegistering.getText();
 		Assert.assertEquals(strRegistering, "Thank you for registering with Main Website Store.");
 		
-		driver.findElement(By.xpath("//a[@class='skip-link skip-account']//span[text()='Account']")).click();
-		driver.findElement(By.xpath("//a[@title='Log Out']")).click();
-				
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		findElement("//a[@class='skip-link skip-account']//span[text()='Account']");
+		findElement("//a[@title='Log Out']");
 		
-		String checkLogout = driver.getTitle();
-		Assert.assertEquals(checkLogout, "Magento Commerce");
-		
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		Thread.sleep(5000);
 		
 		String checkNavigateToHomePage = driver.getTitle();
 		Assert.assertEquals(checkNavigateToHomePage, "Home page");
 		
-		//Don't match expected [Home page], always fail because of founding [Magento Commerce] although has been wait as above
-		
 		driver.close();
 	}
-	
 	
 	//Topic 03: https://www.evernote.com/shard/s415/sh/bfbceded-f40d-438c-ac15-0cdc44c3a5b6/020007bcdac4f9d6
 	@Test(enabled=true)
@@ -173,46 +162,29 @@ public class Topic_03_Browser_WebElementCommands {
 		}
 	}
 
-	@Test(enabled=false)
-	public void TC_03_2_VerifyElementEnable() {
+	@Test(enabled=true)
+	public void TC_03_2_VerifyverifyEltEnable() {
 		driver.get("http://daominhdam.890m.com/");
 		
-		WebElement txtEmail = driver.findElement(By.id("mail"));
-		WebElement radAgeUnder18 = driver.findElement(By.id("under_18"));
-		WebElement txtEreaEdu = driver.findElement(By.id("edu"));
-		WebElement drpJob1 = driver.findElement(By.id("job1"));
-		WebElement chbxDevelopment = driver.findElement(By.id("development"));
-		WebElement slider1 = driver.findElement(By.id("slider-1"));
-		WebElement btnEnabled = driver.findElement(By.id("button-enabled"));
+		verifyEltEnable(driver.findElement(By.id("mail")));
+		verifyEltEnable(driver.findElement(By.id("under_18")));
+		verifyEltEnable(driver.findElement(By.id("edu")));
+		verifyEltEnable(driver.findElement(By.id("job1")));
+		verifyEltEnable(driver.findElement(By.id("development")));
+		verifyEltEnable(driver.findElement(By.id("slider-1")));
+		verifyEltEnable(driver.findElement(By.id("button-enabled")));
 		
-		elementEnable(txtEmail);
-		elementEnable(radAgeUnder18);
-		elementEnable(txtEreaEdu);
-		elementEnable(drpJob1);
-		elementEnable(chbxDevelopment);
-		elementEnable(slider1);
-		elementEnable(btnEnabled);
-		//--
-		
-		WebElement txtPass = driver.findElement(By.id("password"));
-		WebElement radDisable = driver.findElement(By.xpath("//label[@class='light']/preceding-sibling::input[@id='radio-disabled']"));
-		WebElement txtEreaBio = driver.findElement(By.xpath("//label[@for='bio']/following-sibling::textarea"));
-		WebElement drpJob2 = driver.findElement(By.xpath("//label[@for='job2']/following-sibling::select[@id='job2']"));
-		WebElement chbxDisabled = driver.findElement(By.xpath("//label[@class='light']/preceding-sibling::input[@id='check-disbaled']"));
-		WebElement slider2 = driver.findElement(By.xpath("//label[@for='slider-2']/following-sibling::input"));
-		WebElement btnDisabled = driver.findElement(By.xpath("//button[@id='button-enabled']/preceding-sibling::button"));
-		
-		elementEnable(txtPass);
-		elementEnable(radDisable);
-		elementEnable(txtEreaBio);
-		elementEnable(drpJob2);
-		elementEnable(chbxDisabled);
-		elementEnable(slider2);
-		elementEnable(btnDisabled);
+		verifyEltEnable(driver.findElement(By.id("password")));
+		verifyEltEnable(driver.findElement(By.xpath("//label[@class='light']/preceding-sibling::input[@id='radio-disabled']")));
+		verifyEltEnable(driver.findElement(By.xpath("//label[@for='bio']/following-sibling::textarea")));
+		verifyEltEnable(driver.findElement(By.xpath("//label[@for='job2']/following-sibling::select[@id='job2']")));
+		verifyEltEnable(driver.findElement(By.xpath("//label[@class='light']/preceding-sibling::input[@id='check-disbaled']")));
+		verifyEltEnable(driver.findElement(By.xpath("//label[@for='slider-2']/following-sibling::input")));
+		verifyEltEnable(driver.findElement(By.xpath("//button[@id='button-enabled']/preceding-sibling::button")));
 	}
 	
-	@Test(enabled=false)
-	public void TC_03_3_VerifyElementIsSelected() {
+	@Test(enabled=true)
+	public void TC_03_3_VerifyeltIsSelected() {
 		driver.get("http://daominhdam.890m.com/");
 		
 		WebElement radAgeUnder18 = driver.findElement(By.xpath("//input[@id='under_18']"));
@@ -220,10 +192,12 @@ public class Topic_03_Browser_WebElementCommands {
 		
 		radAgeUnder18.click();
 		
-		elementIsSelected(radAgeUnder18);
-		elementIsSelected(chbxDevelopment);
+		eltIsSelected(radAgeUnder18);
+		eltIsSelected(chbxDevelopment);
 	}
-	//--
+	
+	
+	//-_-Function Common_-_-_-_
 		
 	public int randomInt() {
 		Random rand = new Random();
@@ -231,7 +205,7 @@ public class Topic_03_Browser_WebElementCommands {
 		return random;
 	}
 		
-	public void elementEnable(WebElement element) {
+	public void verifyEltEnable(WebElement element) {
 		if(element.isEnabled()) {
 			System.out.println("Element is enabled");
 		}
@@ -239,7 +213,7 @@ public class Topic_03_Browser_WebElementCommands {
 			System.out.println("Element is disable");
 	}
 	
-	public void elementIsSelected(WebElement element) {
+	public void eltIsSelected(WebElement element) {
 		if(element.isSelected()) {
 			System.out.println("Element is selected");
 		}
@@ -247,6 +221,17 @@ public class Topic_03_Browser_WebElementCommands {
 			element.click();
 	}
 	
+	public void inputData(WebElement element, String value) {
+		element.clear();
+		element.sendKeys(value);
+	}
+	
+	public void findElement(String locator) {
+		WebElement element = driver.findElement(By.xpath(locator));
+		element.click();
+	}
+	
+	//-_-Clean up_-_-_-_-_-_-_
 	@AfterClass
 	public void afterClass() {
 		driver.quit();
