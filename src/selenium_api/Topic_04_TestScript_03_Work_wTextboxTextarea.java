@@ -12,23 +12,13 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import java.util.Random;
 
-public class Topic_04_TestScript_03_Work_wTextboxTextarea {
+public class Topic_04_TestScript_03_Work_wTextboxTextarea111 {
 	WebDriver driver;
 
 	// Declare Variable
 	String customerID;
 	String CustomerName, Gender, DoB, Address, City, State, PIN, Mobile, Email, Password;
 	String edtAddress, edtCity, edtState, edtPIN, edtMobile, edtEmail;
-	
-	WebElement eltCustomerName;
-	WebElement eltDoB;
-	WebElement eltAddress;
-	WebElement eltCity;
-	WebElement eltState;
-	WebElement eltPIN;
-	WebElement eltMobile;
-	WebElement eltEmail;
-	WebElement eltPassword;
 
 	@BeforeClass
 	public void beforeClass() {
@@ -48,9 +38,9 @@ public class Topic_04_TestScript_03_Work_wTextboxTextarea {
 		Mobile = "01268734611";
 		Email = "autotest" + random() + "@amil.com";
 		Password = "11234";
-		
+
 		// Data Edited
-		edtAddress = "edit123 VVT";
+		edtAddress = "edit456 VVT";
 		edtCity = "editHCMC";
 		edtState = "editdistrict";
 		edtPIN = "800000";
@@ -59,7 +49,7 @@ public class Topic_04_TestScript_03_Work_wTextboxTextarea {
 	}
 
 	@Test
-	public void TC_AddNewCustomer() {
+	public void TC() {
 		driver.findElement(By.xpath("//input[@name='uid']")).sendKeys("mngr155533");
 		driver.findElement(By.xpath("//input[@name='password']")).sendKeys("aqAtAda");
 		driver.findElement(By.xpath("//input[@name='btnLogin']")).click();
@@ -67,77 +57,66 @@ public class Topic_04_TestScript_03_Work_wTextboxTextarea {
 		// Verify Home page display
 		Assert.assertTrue(driver.findElement(By.xpath("//marquee[text()=\"Welcome To Manager's Page of Guru99 Bank\"]")).isDisplayed());
 
+		// Add New Customer
 		driver.findElement(By.xpath("//a[text()='New Customer']")).click();
 
-		// Find Element
-		eltCustomerName = driver.findElement(By.xpath("//input[@name='name']"));
-		eltDoB = driver.findElement(By.xpath("//input[@name='dob']"));
-		eltAddress = driver.findElement(By.xpath("//textarea[@name='addr']"));
-		eltCity = driver.findElement(By.xpath("//input[@name='city']"));
-		eltState = driver.findElement(By.xpath("//input[@name='state']"));
-		eltPIN = driver.findElement(By.xpath("//input[@name='pinno']"));
-		eltMobile = driver.findElement(By.xpath("//input[@name='telephoneno']"));
-		eltEmail = driver.findElement(By.xpath("//input[@name='emailid']"));
-		eltPassword = driver.findElement(By.xpath("//input[@name='password']"));
-
 		// Input data
-		inputData(eltCustomerName, CustomerName);
+		iptData(driver.findElement(By.xpath("//input[@name='name']")), CustomerName);
 		driver.findElement(By.xpath("//input[@value='m']")).click();
-		inputData(eltDoB, DoB);
-		inputData(eltAddress, Address);
-		inputData(eltCity, City);
-		inputData(eltState, State);
-		inputData(eltPIN, PIN);
-		inputData(eltMobile, Mobile);
-		inputData(eltEmail, Email);
-		inputData(eltPassword, Password);
+		iptData(driver.findElement(By.xpath("//input[@name='dob']")), DoB);
+		iptData(driver.findElement(By.xpath("//textarea[@name='addr']")), Address);
+		iptData(driver.findElement(By.xpath("//input[@name='city']")), City);
+		iptData(driver.findElement(By.xpath("//input[@name='state']")), State);
+		iptData(driver.findElement(By.xpath("//input[@name='pinno']")), PIN);
+		iptData(driver.findElement(By.xpath("//input[@name='telephoneno']")), Mobile);
+		iptData(driver.findElement(By.xpath("//input[@name='emailid']")), Email);
+		iptData(driver.findElement(By.xpath("//input[@name='password']")), Password);
+		
 		driver.findElement(By.xpath("//input[@value='Submit']")).click();
 		Assert.assertTrue(driver.findElement(By.xpath("//p[text()='Customer Registered Successfully!!!']")).isDisplayed());
 
 		customerID = driver.findElement(By.xpath("//td[text()='Customer ID']/following-sibling::td")).getText();
-		
-		//Verify after creating new customer
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Customer Name']/following-sibling::td")).getText(), CustomerName);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Gender']/following-sibling::td")).getText(), Gender);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Birthdate']/following-sibling::td")).getText(), "1987-01-01");
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Address']/following-sibling::td")).getText(), Address);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='City']/following-sibling::td")).getText(), City);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='State']/following-sibling::td")).getText(), State);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Pin']/following-sibling::td")).getText(), PIN);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Mobile No.']/following-sibling::td")).getText(), Mobile);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Email']/following-sibling::td")).getText(), Email);
-	}
 
-	@Test
-	public void TC_EditCustomer() {
+		// Verify after creating new customer
+		vefData(driver.findElement(By.xpath("//td[text()='Customer Name']/following-sibling::td")), CustomerName);
+		vefData(driver.findElement(By.xpath("//td[text()='Gender']/following-sibling::td")), Gender);
+		vefData(driver.findElement(By.xpath("//td[text()='Birthdate']/following-sibling::td")), "1987-01-01");
+		vefData(driver.findElement(By.xpath("//td[text()='Address']/following-sibling::td")), Address);
+		vefData(driver.findElement(By.xpath("//td[text()='City']/following-sibling::td")), City);
+		vefData(driver.findElement(By.xpath("//td[text()='State']/following-sibling::td")), State);
+		vefData(driver.findElement(By.xpath("//td[text()='Pin']/following-sibling::td")), PIN);
+		vefData(driver.findElement(By.xpath("//td[text()='Mobile No.']/following-sibling::td")), Mobile);
+		vefData(driver.findElement(By.xpath("//td[text()='Email']/following-sibling::td")), Email);
+		
+		// Edit Customer
 		driver.findElement(By.xpath("//a[text()='Edit Customer']")).click();
 		driver.findElement(By.xpath("//input[@name='cusid']")).sendKeys(customerID);
 		driver.findElement(By.xpath("//input[@name='AccSubmit']")).click();
 		Assert.assertTrue(driver.findElement(By.xpath("//p[text()='Edit Customer']")).isDisplayed());
-		
-		//Verify data at edit customer screen
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@name='name']")).getAttribute("value"), CustomerName);
-		Assert.assertEquals(driver.findElement(By.xpath("//textarea[@name='addr']")).getText(), Address);
-		
-		//update new data
-		inputData(eltAddress, edtAddress);
-		inputData(eltCity, edtCity);
-		inputData(eltState, edtState);
-		inputData(eltPIN, edtPIN);
-		inputData(eltMobile, edtMobile);
-		inputData(eltEmail, edtEmail);
-		driver.findElement(By.xpath("//input[@name='sub']")).click();
-		Assert.assertTrue(driver.findElement(By.xpath("//p[text()='Customer details updated Successfully!!!']")).isDisplayed());
-	
-		//Verify after update new data
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Address']/following-sibling::td")).getText(), Address);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='City']/following-sibling::td")).getText(), City);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='State']/following-sibling::td")).getText(), State);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Pin']/following-sibling::td")).getText(), PIN);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Mobile No.']/following-sibling::td")).getText(), Mobile);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Email']/following-sibling::td")).getText(), Email);
-	}
 
+		// Verify data at edit customer screen
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@name='name']")).getAttribute("value"), CustomerName);
+		vefData(driver.findElement(By.xpath("//textarea[@name='addr']")), Address);
+		
+		// update new data
+		iptData(driver.findElement(By.xpath("//textarea[@name='addr']")), edtAddress);
+		iptData(driver.findElement(By.xpath("//input[@name='city']")), edtCity);
+		iptData(driver.findElement(By.xpath("//input[@name='state']")), edtState);
+		iptData(driver.findElement(By.xpath("//input[@name='pinno']")), edtPIN);
+		iptData(driver.findElement(By.xpath("//input[@name='telephoneno']")), edtMobile);
+		iptData(driver.findElement(By.xpath("//input[@name='emailid']")), edtEmail);
+		
+		driver.findElement(By.xpath("//input[@value='Submit']")).click();
+		
+		// Verify after update new data
+		vefData(driver.findElement(By.xpath("//td[text()='Address']/following-sibling::td")), edtAddress);
+		vefData(driver.findElement(By.xpath("//td[text()='City']/following-sibling::td")), edtCity);
+		vefData(driver.findElement(By.xpath("//td[text()='State']/following-sibling::td")), edtState);
+		vefData(driver.findElement(By.xpath("//td[text()='Pin']/following-sibling::td")), edtPIN);
+		vefData(driver.findElement(By.xpath("//td[text()='Mobile No.']/following-sibling::td")), edtMobile);
+		vefData(driver.findElement(By.xpath("//td[text()='Email']/following-sibling::td")), edtEmail);
+	}
+	
 	@AfterClass
 	public void afterClass() {
 		driver.quit();
@@ -148,10 +127,14 @@ public class Topic_04_TestScript_03_Work_wTextboxTextarea {
 		int email = rand.nextInt(5000) + 1;
 		return email;
 	}
-
-	public void inputData(WebElement element, String value) {
+	
+	public void iptData(WebElement element, String value) {
 		element.clear();
 		element.sendKeys(value);
+	}
+	
+	public void vefData(WebElement element, String value) {
+		Assert.assertEquals(element.getText(), value);
 	}
 
 }
