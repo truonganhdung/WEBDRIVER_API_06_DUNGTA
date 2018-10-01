@@ -12,7 +12,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import java.util.Random;
 
-public class Topic_04_TestScript_03_Work_wTextboxTextarea111 {
+public class Topic_04_TestScript_03_Work_wTextboxTextarea {
 	WebDriver driver;
 
 	// Declare Variable
