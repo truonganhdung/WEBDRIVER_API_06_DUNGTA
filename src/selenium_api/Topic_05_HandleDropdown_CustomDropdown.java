@@ -97,31 +97,9 @@ public class Topic_05_HandleDropdown_CustomDropdown {
 	public void TC_05_Handle_Vue() throws InterruptedException {
 		driver.get("https://mikerodham.github.io/vue-dropdowns/");
 
-		
-		
 		//vue-dropdowns
-	//	vefDrop("//li[@class='dropdown-toggle']", "//ul[@class='dropdown-menu']/li/a", value);
-		//Assert.assertTrue(driver.findElement(By.xpath("//li[@class='dropdown-toggle']")).isDisplayed());
-		
-		WebElement parantDropDown = driver.findElement(By.xpath("//li[@class='dropdown-toggle']"));
-		parantDropDown.click();
-		//((JavascriptExecutor) driver).executeScript("arguments[0].click();", parantDropDown);
-		
-		List <WebElement> allItemsDropDown = driver.findElements(By.xpath("//ul[@class='dropdown-menu']/li/a"));
-		int itemNumber = allItemsDropDown.size();
-		wait.until(ExpectedConditions.visibilityOfAllElements(allItemsDropDown));
-		for (int i = 0; i < itemNumber; i++) {
-			if (allItemsDropDown.get(i).getText().equals(expectedValue)) {
-				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", allItemsDropDown.get(i));
-				Thread.sleep(1000);
-				allItemsDropDown.get(i).click();
-				System.out.println(expectedValue);
-				break;
-			}
-		}
-		
-		
-		
+		vefDrop("//li[@class='dropdown-toggle']", "//ul[@class='dropdown-menu']/li/a", "Third Option");
+		Assert.assertTrue(driver.findElement(By.xpath("//ul[@class='dropdown-menu hide']//a[contains(text(),'Third')]")).isDisplayed());
 	}
 	
 	
@@ -150,9 +128,10 @@ public class Topic_05_HandleDropdown_CustomDropdown {
 		// 4 - compare w' text that input
 		// 5 - click if meet condition
 		for (int i = 0; i < itemNumber; i++) {
-			if (allItemsDropDown.get(i).getText().equals(expectedValue)) {
+			if (allItemsDropDown.get(i).getText().trim().equals(expectedValue)) {
 				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", allItemsDropDown.get(i));
 				Thread.sleep(1000);
+				
 				allItemsDropDown.get(i).click();
 				break;
 			}
