@@ -1,3 +1,8 @@
+/* Author: truonganhdung
+ * Created Date: xx/xx/2018
+ * Modified Date: xx/xx/2018
+ * */
+
 package selenium_api;
 
 import java.util.concurrent.TimeUnit;
@@ -14,6 +19,7 @@ import org.testng.annotations.Test;
 public class Templates {
     WebDriver driver;
 
+    //( ._.')----------------------------------------------------
 	@BeforeClass
 	public void beforeClass() {
 		driver = new FirefoxDriver();
@@ -22,13 +28,14 @@ public class Templates {
 		driver.manage().window().maximize();
 	}
 
+	//( ._.')----------------------------------------------------
 	@Test
 	public void TC_() {
 		driver.get("");
 		
 	}
 
-
+	//( ._.')----------------------------------------------------
 	@AfterClass
 	public void afterClass() {
 		driver.quit();
