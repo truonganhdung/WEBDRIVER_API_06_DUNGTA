@@ -16,7 +16,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Templates {
+public class Topic_06_Button_RadioButton_Checkbox_Alert {
     WebDriver driver;
 
     //( ._.')----------------------------------------------------
@@ -29,7 +29,7 @@ public class Templates {
 	}
 
 	//( ._.')----------------------------------------------------
-	@Test(enabled=true)
+	@Test
 	public void TC_() {
 		driver.get("");
 		
