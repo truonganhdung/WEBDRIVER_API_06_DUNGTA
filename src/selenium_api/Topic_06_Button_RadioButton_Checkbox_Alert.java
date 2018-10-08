@@ -126,7 +126,7 @@ public class Topic_06_Button_RadioButton_Checkbox_Alert {
 		
 		Assert.assertEquals(driver.getCurrentUrl(), urlPath);
 	}
-	//111
+	
 	/*public boolean verfChckBx_RadioBx(WebElement element) {
 		return element.isSelected();
 	}*/
