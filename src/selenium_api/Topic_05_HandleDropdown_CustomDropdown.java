@@ -1,6 +1,6 @@
 /* Author: truonganhdung
  * Created Date: 10/05/2018
- * Modified Date: 10/07/2018
+ * Modified Date: 10/08/2018
  * */
 
 package selenium_api;
@@ -54,7 +54,7 @@ public class Topic_05_HandleDropdown_CustomDropdown {
 	}
 	
 	@Test(enabled=false)
-	public void TC_02_Handle_JqueryDropdownList() throws InterruptedException {
+	public void TC_02_Handle_JqueryDropdownList() throws Exception {
 		driver.get("http://jqueryui.com/resources/demos/selectmenu/default.html");
 		
 		/*
@@ -76,7 +76,7 @@ public class Topic_05_HandleDropdown_CustomDropdown {
 	}
 
 	@Test(enabled = false)
-	public void TC_03_Handle_AngularDropdownList() throws InterruptedException {
+	public void TC_03_Handle_AngularDropdownList() throws Exception {
 		driver.get("https://material.angular.io/components/select/examples");
 
 		//angularjs
@@ -85,7 +85,7 @@ public class Topic_05_HandleDropdown_CustomDropdown {
 	}
 
 	@Test(enabled = false)
-	public void TC_04_Handle_Kendo() throws InterruptedException {
+	public void TC_04_Handle_Kendo() throws Exception {
 		driver.get("https://demos.telerik.com/kendo-ui/dropdownlist/index");
 		
 		//kendoui
@@ -94,7 +94,7 @@ public class Topic_05_HandleDropdown_CustomDropdown {
 	}
 	
 	@Test(enabled = false)
-	public void TC_05_Handle_Vue() throws InterruptedException {
+	public void TC_05_Handle_Vue() throws Exception {
 		driver.get("https://mikerodham.github.io/vue-dropdowns/");
 
 		//vue-dropdowns
@@ -102,9 +102,18 @@ public class Topic_05_HandleDropdown_CustomDropdown {
 		Assert.assertTrue(driver.findElement(By.xpath("//li[@class='dropdown-toggle' and contains(text(),'Third')]")).isDisplayed());
 	}
 	
-	@Test(enabled = true)
-	public void TC_06_Jquery_Editable_Select() throws InterruptedException {
-		driver.get("http://indrimuska.github.io/jquery-editable-select/");
+	@Test(enabled = false)
+	public void TC_06_Jquery_Editable_Select() throws Exception {
+		driver.get("http://indrimuska.github.io/jquery-editable-select");
+		
+		//Jquery editable select
+		edtSltDrop("//div[@id='default-place']/input", "//div[@id='default-place']//li", "a", "Audi");
+		//Assert.assertTrue(driver.findElement(By.xpath("//li[@class='dropdown-toggle' and contains(text(),'Third')]")).isDisplayed());
+	}
+	
+	@Test(enabled = false)
+	public void TC_07_Multiple_Select() throws Exception {
+		driver.get("http://wenzhixin.net.cn/p/multiple-select/docs");
 
 		//Jquery editable select
 		edtSltDrop("//div[@id='default-place']/input", "//div[@id='default-place']//li", "a", "Audi");
@@ -117,9 +126,8 @@ public class Topic_05_HandleDropdown_CustomDropdown {
 		driver.quit();
 	}
 	
-	
 	//( ._.')----------------------------------------------------
-	public void sltDrop(String parentLocator, String allItemsLocator, String expectedValue) throws InterruptedException  {
+	public void sltDrop(String parentLocator, String allItemsLocator, String expectedValue) throws Exception  {
 		// 1 - Scroll to drop-down list then Click **parent locator** to expand all drop-down list
 		WebElement parantDropDown = driver.findElement(By.xpath(parentLocator));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", parantDropDown);
@@ -147,8 +155,7 @@ public class Topic_05_HandleDropdown_CustomDropdown {
 		Thread.sleep(1000);
 	}
 	
-	//( ._.')----------------------------------------------------
-	public void edtSltDrop(String parentLocator, String allItemsLocator, String search, String expectedValue) throws InterruptedException  {
+	public void edtSltDrop(String parentLocator, String allItemsLocator, String search, String expectedValue) throws Exception  {
 		// 1 - Scroll to drop-down list then Click **parent locator** to expand all drop-down list
 		WebElement parantDropDown = driver.findElement(By.xpath(parentLocator));
 		parantDropDown.clear();
@@ -178,5 +185,4 @@ public class Topic_05_HandleDropdown_CustomDropdown {
 		}
 		Thread.sleep(1000);
 	}
-
 }
