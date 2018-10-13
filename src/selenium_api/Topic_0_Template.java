@@ -16,7 +16,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Templates {
+public class Topic_0_Template {
     WebDriver driver;
 
     //( ._.')----------------------------------------------------
