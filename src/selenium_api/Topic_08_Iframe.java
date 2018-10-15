@@ -1,6 +1,6 @@
 /* Author: truonganhdung
- * Created Date: 10/13x/2018
- * Modified Date: xx/xx/2018
+ * Created Date: 10/13/2018
+ * Modified Date: 10/15/2018
  * */
 
 package selenium_api;
@@ -30,8 +30,8 @@ public class Topic_08_Iframe {
 	}
 
 	//( ._.')----------------------------------------------------
-	@Test(enabled=true)
-	public void TC_() throws Exception {
+	@Test(enabled=false)
+	public void TC_01(){
 		/*-- Step 01 --*/
 		driver.get("http://www.hdfcbank.com/");
 		
@@ -61,12 +61,32 @@ public class Topic_08_Iframe {
 		driver.switchTo().defaultContent();
 		
 		/*-- Step 04 --*/
-		List<WebElement> banners = driver.findElements(By.xpath("//div[@id='bannercontainer']"));
-		driver.switchTo().frame(banners);
+		WebElement banners = driver.findElement(By.xpath("//div[@class='slidingbanners']//iframe"));
 		Assert.assertTrue(banners.isDisplayed());
+		driver.switchTo().frame(banners);
+		
+		List<WebElement> list6Banners= driver.findElements(By.xpath("//div[@class='bannerimage-container']"));
+		Assert.assertEquals(list6Banners.size(),6);
+		
+		driver.switchTo().defaultContent();
+		
+		/*-- Step 05 --*/
+		List<WebElement> list8Icons= driver.findElements(By.xpath("//div[@class='flipBanner']//img[@class='front icon']"));
+		Assert.assertEquals(list8Icons.size(),8);
 		
 	}
 
+	@Test(enabled=true)
+	public void TC_02(){
+		driver.get("http://daominhdam.890m.com/");
+		
+		String link = driver.findElement(By.xpath("//a[text()='Click Here']")).getAttribute("href");
+		driver.get(link);
+		String newTab = driver.getTitle();
+		Assert.assertEquals(newTab, "Google");
+		
+		driver.navigate().back();
+	}
 	//( ._.')----------------------------------------------------
 	@AfterClass
 	public void afterClass() {
