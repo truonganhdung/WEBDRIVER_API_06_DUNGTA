@@ -5,8 +5,13 @@
 
 package selenium_api;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -21,6 +26,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import javafx.print.Collation;
+
 public class Topic_05_HandleDropdown_CustomDropdown {
 	WebDriver driver;
 	WebDriverWait wait;
@@ -29,11 +36,11 @@ public class Topic_05_HandleDropdown_CustomDropdown {
 	@BeforeClass
 	public void beforeClass() {
 		driver = new FirefoxDriver();
-		wait = new WebDriverWait(driver, 30);
+		wait = new WebDriverWait(driver, 10);
 		
 		js = (JavascriptExecutor) driver;
 		
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 	}
 
@@ -99,12 +106,48 @@ public class Topic_05_HandleDropdown_CustomDropdown {
 		Assert.assertTrue(driver.findElement(By.xpath("//li[@class='dropdown-toggle' and contains(text(),'Third')]")).isDisplayed());
 	}
 	
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void TC_03_Jquery_Editable_Select() throws Exception {
 		driver.get("http://indrimuska.github.io/jquery-editable-select/");
 		
 		edtDropDown("//div[@id='default-place']/input","//div[@id='default-place']//li","m", "BMW");
 		Assert.assertTrue(driver.findElement(By.xpath("//div[@id='default-place']//li[text()='" + "BMW" + "']")).isDisplayed());
+	}
+	
+	@Test(enabled = true)
+	public void TC_03() throws Exception {
+		driver.get("https://semantic-ui.com/modules/dropdown.html");
+		List<String> lstExpected = Stream.of("Angola", "Aruba").collect(Collectors.toList());
+		
+		WebElement parantDropDown = driver.findElement(By.xpath("//div[@class='another dropdown example']//div[@class='ui fluid multiple search selection dropdown']"));
+		//((JavascriptExecutor) driver).executeScript("arguments[0].click();", parantDropDown);
+		
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",parantDropDown);
+		
+		parantDropDown.sendKeys("a");
+		
+		Thread.sleep(1000);
+		
+		List <WebElement> allItemsDropDown = driver.findElements(By.xpath("//div[@class='ui fluid multiple search selection dropdown active visible']//i"));
+		
+		for (WebElement f: allItemsDropDown) {
+			int index = lstExpected.indexOf(f.getText().trim());
+			
+			if (index > -1) {
+				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", f);
+				Thread.sleep(1000);
+				f.click();
+			}
+		}
+		Thread.sleep(1000);
+		
+		List<String> lstActual = new ArrayList<String>();
+		List<WebElement> lstSelected = driver.findElements(By.xpath("//div[@class='ui fluid multiple search selection dropdown']//a[@class='ui label transition visible']"));
+		
+		for(WebElement e: lstSelected) {
+			lstActual.add(e.getText());
+		}
+		Assert.assertEquals(new HashSet<String>(lstActual), new HashSet<String>(lstExpected));
 	}
 	
 	//( ._.')----------------------------------------------------
