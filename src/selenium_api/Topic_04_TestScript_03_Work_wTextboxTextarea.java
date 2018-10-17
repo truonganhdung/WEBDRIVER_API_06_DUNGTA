@@ -30,7 +30,7 @@ public class Topic_04_TestScript_03_Work_wTextboxTextarea {
 		// Data Create
 		CustomerName = "Dung Truong";
 		Gender = "male";
-		DoB = "01/01/1987";
+		DoB = "1987-03-12";
 		Address = "123 VVT";
 		City = "HCMC";
 		State = "district";
@@ -80,7 +80,7 @@ public class Topic_04_TestScript_03_Work_wTextboxTextarea {
 		// Verify after creating new customer
 		vefData(driver.findElement(By.xpath("//td[text()='Customer Name']/following-sibling::td")), CustomerName);
 		vefData(driver.findElement(By.xpath("//td[text()='Gender']/following-sibling::td")), Gender);
-		vefData(driver.findElement(By.xpath("//td[text()='Birthdate']/following-sibling::td")), "1987-01-01");
+		vefData(driver.findElement(By.xpath("//td[text()='Birthdate']/following-sibling::td")), DoB);
 		vefData(driver.findElement(By.xpath("//td[text()='Address']/following-sibling::td")), Address);
 		vefData(driver.findElement(By.xpath("//td[text()='City']/following-sibling::td")), City);
 		vefData(driver.findElement(By.xpath("//td[text()='State']/following-sibling::td")), State);
