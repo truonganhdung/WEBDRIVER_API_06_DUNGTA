@@ -6,7 +6,6 @@
 package selenium_api;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -25,8 +24,6 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
-import javafx.print.Collation;
 
 public class Topic_05_HandleDropdown_CustomDropdown {
 	WebDriver driver;
