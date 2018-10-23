@@ -7,11 +7,8 @@ package selenium_api;
 
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -31,7 +28,6 @@ public class Topic_0_Template {
 	//( ._.')----------------------------------------------------
 	@Test(enabled=true)
 	public void TC_() {
-		driver.get("");
 		
 	}
 
