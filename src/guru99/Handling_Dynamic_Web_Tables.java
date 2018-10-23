@@ -36,10 +36,10 @@ public class Handling_Dynamic_Web_Tables {
 		
 		//( ._.')--Fetch number of rows and columns from Dynamic WebTable
 		//No.of Columns
-		List  col = driver.findElements(By.xpath("//div[@id='leftcontainer']//th"));
+		List<WebElement>  col = driver.findElements(By.xpath("//div[@id='leftcontainer']//th"));
 		System.out.println("Total No of columns are : " +col.size());
 		//No.of rows 
-		List  rows = driver.findElements(By.xpath("//table[@class='dataTable']//td[a]")); 
+		List<WebElement>  rows = driver.findElements(By.xpath("//table[@class='dataTable']//td[a]")); 
 		System.out.println("Total No of rows are : " + rows.size());
 		
 		//( ._.')--Fetch cell value of a particular row and column of the Dynamic Table
