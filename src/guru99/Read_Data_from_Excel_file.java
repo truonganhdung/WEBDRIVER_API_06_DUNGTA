@@ -33,7 +33,7 @@ public class Read_Data_from_Excel_file {
 	@Test(enabled=true)
 	public void TC_01() throws Exception{
 	    //Prepare the path of excel file
-	    String filePath = System.getProperty("user.dir")+"\\src\\excelExportAndFileIO";
+		String filePath = System.getProperty("user.dir")+"\\src\\excelExportAndFileIO";
 
 	    //Call read file method of the class to read data
 	    objExcelFile.readExcel(filePath,"ExportExcel.xlsx","ExcelGuru99Demo");
@@ -65,7 +65,7 @@ public class Read_Data_from_Excel_file {
 	    Sheet guru99Sheet = guru99Workbook.getSheet(sheetName);
 
 	    //Find number of rows in excel file
-	    int rowCount = guru99Sheet.getLastRowNum()-guru99Sheet.getFirstRowNum();
+	    int rowCount = guru99Sheet.getLastRowNum() - guru99Sheet.getFirstRowNum();
 
 	    //Create a loop over all the rows of excel file to read it
 	    for (int i = 0; i < rowCount+1; i++) {
