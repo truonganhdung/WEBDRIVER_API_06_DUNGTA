@@ -3,7 +3,7 @@
  * Modified Date: 10/23/2018
  * */
 
-package guru99;
+package guru99.Read_Write;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;

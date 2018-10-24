@@ -8,8 +8,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import POMExample_SimplePOM.Guru99HomePage_SimplePOM;
-import POMExample_SimplePOM.Guru99Login_SimplePOM;
+import guru99.POM.simplePOM.Guru99HomePage_SimplePOM;
+import guru99.POM.simplePOM.Guru99Login_SimplePOM;
 
 public class Test99GuruLogin {
 

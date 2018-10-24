@@ -8,11 +8,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import POMExample_PageFactory.Guru99HomePage_PageFactory;
-import POMExample_PageFactory.Guru99Login_PageFactory;
-
-
-
+import guru99.POM.pageFactory.Guru99HomePage_PageFactory;
+import guru99.POM.pageFactory.Guru99Login_PageFactory;
 
 public class Test99GuruLoginWithPageFactory {
 
@@ -47,5 +44,4 @@ public class Test99GuruLoginWithPageFactory {
 	//Verify home page
 	Assert.assertTrue(objHomePage.getHomePageDashboardUserName().toLowerCase().contains("manger id : mgr123"));
 	}
-	
 }

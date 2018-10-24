@@ -7,9 +7,9 @@ package guru99.DataDriven.testCases;
 
 import java.util.Properties;
 
-import DataDriven_operation.ReadObject;
-import DataDriven_operation.UIOperation;
-import DataDriven_excelExportAndFileIO.ReadGuru99ExcelFile;
+import guru99.DataDriven.operation.ReadObject;
+import guru99.DataDriven.operation.UIOperation;
+import guru99.DataDriven.excelExportAndFileIO.ReadGuru99ExcelFile;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;

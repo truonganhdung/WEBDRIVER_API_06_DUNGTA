@@ -5,9 +5,9 @@
 
 package guru99.DataDriven.testCases;
 
-import DataDriven_excelExportAndFileIO.ReadGuru99ExcelFile;
-import DataDriven_operation.ReadObject;
-import DataDriven_operation.UIOperation;
+import guru99.DataDriven.excelExportAndFileIO.ReadGuru99ExcelFile;
+import guru99.DataDriven.operation.ReadObject;
+import guru99.DataDriven.operation.UIOperation;
 
 import java.io.IOException;
 import java.util.Properties;
