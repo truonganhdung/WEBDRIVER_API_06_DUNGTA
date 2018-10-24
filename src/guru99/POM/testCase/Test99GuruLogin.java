@@ -1,4 +1,4 @@
-package POMExample_testcase;
+package guru99.POM.testCase;
 
 import java.util.concurrent.TimeUnit;
 

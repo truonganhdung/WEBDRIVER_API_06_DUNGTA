@@ -1,4 +1,4 @@
-package POMExample_SimplePOM;
+package guru99.POM.simplePOM;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

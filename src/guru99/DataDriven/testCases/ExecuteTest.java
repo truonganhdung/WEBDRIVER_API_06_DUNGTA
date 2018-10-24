@@ -3,7 +3,7 @@
  * Modified Date: ../../2018
  * */
 
-package DataDriven_TestCases;
+package guru99.DataDriven.testCases;
 
 import java.util.Properties;
 

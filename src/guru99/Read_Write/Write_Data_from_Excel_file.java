@@ -3,7 +3,7 @@
  * Modified Date: 10/23/2018
  * */
 
-package guru99;
+package guru99.Read_Write;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
@@ -18,15 +18,15 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.FileOutputStream;
 import org.apache.poi.ss.usermodel.Cell;
 
-public class RWrite_Data_from_Excel_file {
+public class Write_Data_from_Excel_file {
     WebDriver driver;
-    RWrite_Data_from_Excel_file objExcelFile;
+    Write_Data_from_Excel_file objExcelFile;
     
     //( ._.')----------------------------------------------------
 	@BeforeClass
 	public void beforeClass() {
 		//Create an object of ReadGuru99ExcelFile class
-		objExcelFile = new RWrite_Data_from_Excel_file();
+		objExcelFile = new Write_Data_from_Excel_file();
 	}
 
 	//( ._.')----------------------------------------------------

@@ -1,4 +1,4 @@
-package POMExample_PageFactory;
+package guru99.POM.pageFactory;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
