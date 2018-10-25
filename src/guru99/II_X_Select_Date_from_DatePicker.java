@@ -18,7 +18,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Select_Date_from_DatePicker {
+public class II_X_Select_Date_from_DatePicker {
     WebDriver driver;
 
     //( ._.')----------------------------------------------------

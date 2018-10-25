@@ -16,7 +16,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import java.io.IOException;
 
-public class Upload_Download_File {
+public class I_V_Upload_Download_File {
     WebDriver driver;
 
     //( ._.')----------------------------------------------------

@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 
-public class TestGuru99MultipleSession {
+public class III_VI_Multiple_Session {
 	
     @Test
     public void executSession1(){

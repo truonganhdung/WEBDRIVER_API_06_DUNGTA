@@ -16,7 +16,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Handling_Dynamic_Web_Tables {
+public class II_II_Handling_Dynamic_Web_Tables {
     WebDriver driver;
 
     //( ._.')----------------------------------------------------

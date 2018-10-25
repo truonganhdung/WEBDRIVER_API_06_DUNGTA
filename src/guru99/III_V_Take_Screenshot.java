@@ -17,7 +17,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 import org.testng.annotations.AfterClass;
 
-public class TakeScreenshot {
+public class III_V_Take_Screenshot {
 	WebDriver driver ;
 
 /*	@Test

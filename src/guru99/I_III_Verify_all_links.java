@@ -16,7 +16,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Verify_all_links {
+public class I_III_Verify_all_links {
     WebDriver driver;
 
     //( ._.')----------------------------------------------------
