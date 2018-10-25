@@ -2,7 +2,7 @@
     <test name="search-firefox">
         <parameter name="browser" value="firefox"/>
         	<classes>
-            	<class name="guru99.TestGuru99MultipleSession"/>
+            	<class name="guru99.III_VI_Multiple_Session"/>
         	</classes>
     </test>
 </suite>
