@@ -1,6 +1,6 @@
 /* Author: truonganhdung
- * Created Date: xx/xx/2018
- * Modified Date: xx/xx/2018
+ * Created Date: 10/27/2018
+ * Modified Date: ../../2018
  * */
 
 package selenium_api;
@@ -13,15 +13,12 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
-import com.thoughtworks.selenium.Wait;
 
 public class Topic_11_Upload_File {
     WebDriver driver;
@@ -48,10 +45,11 @@ public class Topic_11_Upload_File {
 	//( ._.')----------------------------------------------------
 	@Test(enabled=false)
 	public void TC_01(){
-		driver.get("http://blueimp.github.com/jQuery-File-Upload/");
-		
 		String files[] = {path01, path02, path03};
 		int fileLength = files.length;
+		
+		
+		driver.get("http://blueimp.github.com/jQuery-File-Upload/");
 		
 		for(int i = 0; i < fileLength; i++) {
 			WebElement uploadFile= driver.findElement(By.xpath("//input[@type='file']"));
@@ -81,9 +79,11 @@ public class Topic_11_Upload_File {
 		driver.close();
 	}
 	
+	
 	@Test(enabled=true)
 	public void TC_04(){
 		String emailAddress = "uploadFolder@gmail.com", firstName = "uploadFolderFName", uploadFolder = "uploadFolder";
+		
 		
 		driver.get("https://encodable.com/uploaddemo/");
 		
