@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="_4_Run_Multi_Suite">
+	<suite-files>
+		<suite-file path="_0_Annotations_Group_Priority.xml"/>
+		<suite-file path="_2_Multi_Browsers.xml"/>
+	</suite-files>
+</suite>

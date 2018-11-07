@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" parallel="false">
+	<test name="Test">
+		<groups>
+			<run>
+				<include name="1" />
+				<include name="3" />
+			</run>
+		</groups>
+		<classes>
+			<class name="testNG._0_Annotations" />
+			<class name="testNG._0_Group" />
+			<class name="testNG._0_Priority" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->
