@@ -8,7 +8,7 @@ package java_basic;
 public class Java_09_System_Properties {
 
 	public static void main(String[] args) {
-		String rootFolder = System.getProperty("user.dir");
+//		String rootFolder = System.getProperty("user.dir");
 		
 		System.setProperty("webdriver.chrome.driver", ".\\chromedriver.exe");
 		
